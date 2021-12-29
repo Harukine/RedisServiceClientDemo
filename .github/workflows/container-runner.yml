@@ -6,10 +6,16 @@ on:
 jobs:
   container-job:
     runs-on: ubuntu-latest
+    # we are using a node container image from docker hub to run the JavaScript
     container: node:10.18-jessie
+    
+    # Service containers to run with `container-job`
     services:
-      redis:
-        image: redis
+      # Name for the service container
+      redis-3:
+        # Docker hub image for redis
+        image: redis:3
+        # Setting health checks to wait until redis has started
         options: >-
           --health-cmd "redis-cli ping"
           --health-interval 10s
@@ -24,7 +30,11 @@ jobs:
         run: npm ci
         
       - name: Connect to Redis
+        # Runs JavaScript to create a Redis client, populate data and read data
         run: node redisclient.js
+        # Environment variable are passed to JavaScript to create Redis client
         env:
-          REDIS_HOST: redis
+          # As the host name service container name(label) is passed
+          REDIS_HOST: redis-3
+          # The default Redis port is passed to create the redis client
           REDIS_PORT: 6379
