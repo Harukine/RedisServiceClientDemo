@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Harukine/RedisServiceClientDemo/issues"
   },
-  "homepage": "https://github.com/Harukine/RedisServiceClientDemo#readme"
+  "homepage": "https://github.com/Harukine/RedisServiceClientDemo#readme",
+  "dependencies": {
+    "redis": "^4.0.1"
+  }
 }
