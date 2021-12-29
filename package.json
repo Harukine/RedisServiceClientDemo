@@ -1,5 +1,5 @@
 {
-  "name": "redisserviceclientdemo",
+  "name": "redis-service-client-demo",
   "version": "1.0.0",
   "description": "",
   "main": "redisclient.js",
